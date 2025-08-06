@@ -1931,7 +1931,18 @@ struct npc_summon_possessedAI : ScriptedAI
 
                     float threatAmount = threatRef->getThreat();
                     playerThreatMgr.addThreat(target, threatAmount);
+
+                    // Force mobs to enter combat with player
+                    if (target->IsAlive())
+                    {
+                        // Set player in combat with mob
+                        pPlayer->SetInCombatWith(target);
+                        target->SetInCombatWith(pPlayer);
+                    }
                 }
+
+                // Also set player in combat with zone, to ensure combat flag
+                pPlayer->SetInCombatWithZone();
             }
         }
 
