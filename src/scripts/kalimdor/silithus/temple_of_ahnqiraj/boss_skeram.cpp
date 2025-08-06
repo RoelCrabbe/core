@@ -273,14 +273,17 @@ struct boss_skeramAI : public ScriptedAI
         if (boss_skeramAI* imageAI = dynamic_cast<boss_skeramAI*>(skeramImage->AI()))
             imageAI->IsImage = true;
 
-        // FIX: calculate boss's current HP percent
-        float skeramPercent = m_creature->GetHealthPercent() / 100.0f;
-
-        float staticPercent = 0.125f; // 12.5% static HP for clones
+        // Always give clones 12.5% of boss's max HP
+        float staticPercent = 0.125f; 
         float maxHealth = m_creature->GetMaxHealth() * staticPercent;
 
+        // Set max HP
         skeramImage->SetMaxHealth(maxHealth);
-        skeramImage->SetHealthPercent(skeramPercent * 100.0f);  // Keep clones' current HP % same as boss
+
+        // Match boss's current % HP
+        float currentPercent = m_creature->GetHealthPercent();
+        skeramImage->SetHealthPercent(currentPercent);
+        
         skeramImage->SetInCombatWithZone();
         skeramImage->SetVisibility(VISIBILITY_OFF);
 
