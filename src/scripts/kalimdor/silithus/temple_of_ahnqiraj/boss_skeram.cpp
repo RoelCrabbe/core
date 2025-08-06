@@ -225,24 +225,25 @@ struct boss_skeramAI : public ScriptedAI
 
         if (FullFillment_Timer < diff)
         {
-            // Get closest target
-            if (Player* target = m_creature->SelectAttackingTarget(ATTACKING_TARGET_RANDOM, 1))
+            if (Unit* pTarget = m_creature->SelectAttackingTarget(ATTACKING_TARGET_RANDOM, 1)) // skip top threat
             {
-                if (DoCastSpellIfCan(target, SPELL_TRUE_FULFILLMENT, CF_AURA_NOT_PRESENT) == CAST_OK)
+                if (DoCastSpellIfCan(pTarget, SPELL_TRUE_FULFILLMENT, CF_AURA_NOT_PRESENT) == CAST_OK)
                 {
-                    // Cancel buffs on previous victim
-                    CancelFulfillment();
+                    CancelFulfillment(); // remove buffs from old victim
 
-                    m_creature->CastSpell(target, SPELL_TF_HASTE, true);
-                    m_creature->CastSpell(target, SPELL_TF_MOD_HEAL, true);
-                    m_creature->CastSpell(target, SPELL_TF_IMMUNITY, true);
+                    m_creature->CastSpell(pTarget, SPELL_TF_HASTE, true);
+                    m_creature->CastSpell(pTarget, SPELL_TF_MOD_HEAL, true);
+                    m_creature->CastSpell(pTarget, SPELL_TF_IMMUNITY, true);
+
+                    if (pTarget->GetTypeId() == TYPEID_PLAYER)
+                        ControlledPlayerGUID = pTarget->GetObjectGuid();
 
                     FullFillment_Timer = urand(20000, 25000);
-                    ControlledPlayerGUID = target->GetObjectGuid();
                 }
             }
         }
         else FullFillment_Timer -= diff;
+
 
         if (Blink_Timer < diff)
         {
