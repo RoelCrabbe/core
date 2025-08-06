@@ -262,7 +262,6 @@ struct boss_skeramAI : public ScriptedAI
 
                 NextSplitPercent -= 25.0f;
             }
-
     }
 
     void JustSummoned(Creature* skeramImage) override
@@ -273,21 +272,18 @@ struct boss_skeramAI : public ScriptedAI
         if (boss_skeramAI* imageAI = dynamic_cast<boss_skeramAI*>(skeramImage->AI()))
             imageAI->IsImage = true;
 
-        // Always give clones 12.5% of boss's max HP
-        float staticPercent = 0.125f; 
-        float maxHealth = m_creature->GetMaxHealth() * staticPercent;
+        // Static HP = 12.5% of the real boss's max HP
+        float staticPercent = 0.125f;
+        float cloneHealth = m_creature->GetMaxHealth() * staticPercent;
 
-        // Set max HP
-        skeramImage->SetMaxHealth(maxHealth);
+        // Give clone both this max HP and current HP
+        skeramImage->SetMaxHealth(cloneHealth);
+        skeramImage->SetHealth(cloneHealth);
 
-        // Match boss's current % HP
-        float currentPercent = m_creature->GetHealthPercent();
-        skeramImage->SetHealthPercent(currentPercent);
-        
         skeramImage->SetInCombatWithZone();
         skeramImage->SetVisibility(VISIBILITY_OFF);
 
-        // Set illusion mana to be the same as the real one
+        // Match mana to the real boss
         skeramImage->SetPower(POWER_MANA, m_creature->GetPower(POWER_MANA));
 
         if (!ImageA)
