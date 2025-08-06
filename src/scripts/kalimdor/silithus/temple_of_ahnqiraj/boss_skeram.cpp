@@ -273,18 +273,22 @@ struct boss_skeramAI : public ScriptedAI
         if (boss_skeramAI* imageAI = dynamic_cast<boss_skeramAI*>(skeramImage->AI()))
             imageAI->IsImage = true;
 
-        // Boss % HP as fraction
-        float bossPercent = m_creature->GetHealth() / m_creature->GetMaxHealth();
+        float bossPercent = m_creature->GetHealthPercent(); // 0–100
+        float desiredCloneHP = m_creature->GetMaxHealth() * 0.125f; // always ~68–69k for 556k boss
 
-        // Desired absolute HP for the clone (constant per split type)
-        float desiredCloneHP = m_creature->GetMaxHealth() * 0.125f; // 12.5% of boss max HP
+        // Avoid divide-by-zero
+        if (bossPercent < 1.0f) bossPercent = 1.0f;
 
-        // Calculate clone max HP so SetHealthPercent gives desired absolute HP
-        float cloneMaxHP = desiredCloneHP / bossPercent;
+        // Calculate required max HP so SetHealthPercent() results in desiredCloneHP
+        float cloneMaxHP = desiredCloneHP / (bossPercent / 100.0f);
 
-        // Apply
+        // Clamp to safe range
+        if (cloneMaxHP < desiredCloneHP) cloneMaxHP = desiredCloneHP;
+        if (cloneMaxHP > m_creature->GetMaxHealth()) cloneMaxHP = m_creature->GetMaxHealth();
+
         skeramImage->SetMaxHealth(cloneMaxHP);
-        skeramImage->SetHealthPercent(bossPercent * 100.0f);
+        skeramImage->SetHealthPercent(bossPercent);
+
         skeramImage->SetInCombatWithZone();
         skeramImage->SetVisibility(VISIBILITY_OFF);
 
