@@ -1917,15 +1917,12 @@ struct npc_summon_possessedAI : ScriptedAI
         {
             if (auto pPlayer = pOwner->ToPlayer())
             {
-                // Remove the aura caused by the summon spell
                 if (uint32 spellId = m_creature->GetUInt32Value(UNIT_CREATED_BY_SPELL))
                     pPlayer->RemoveAurasDueToSpell(spellId);
 
-                // Transfer threat from Eye to player
-                auto& eyeThreatMgr = m_creature->getThreatManager();
-                auto& playerThreatMgr = pPlayer->getThreatManager();
+                auto& eyeThreatMgr = m_creature->GetThreatManager();
+                auto& playerThreatMgr = pPlayer->GetThreatManager();
 
-                // Iterate over all threat entries on the Eye
                 for (auto const& threatRef : eyeThreatMgr.getThreatList())
                 {
                     Unit* target = threatRef->getTarget();
@@ -1933,13 +1930,11 @@ struct npc_summon_possessedAI : ScriptedAI
                         continue;
 
                     float threatAmount = threatRef->getThreat();
-                    // Add threat to player, accumulating if already present
                     playerThreatMgr.addThreat(target, threatAmount);
                 }
             }
         }
 
-        // Call base class to handle death normally
         ScriptedAI::JustDied(pKiller);
     }
 };
