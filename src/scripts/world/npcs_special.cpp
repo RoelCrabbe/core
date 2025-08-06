@@ -1904,13 +1904,37 @@ struct npc_summon_possessedAI : ScriptedAI
     explicit npc_summon_possessedAI(Creature* pCreature) : ScriptedAI(pCreature)
     {
         npc_summon_possessedAI::Reset();
+        
+        // Set a much larger aggro/combat range for possessed creatures
+        m_creature->SetAggroDistance(100.0f); // Increase from default ~10-15 to 100 yards
+        
+        // Alternative method if SetAggroDistance doesn't exist:
+        // m_creature->SetDetectionDistance(100.0f);
     }
-
+    
     void Reset() override
     {
-
     }
-
+    
+    void EnterCombat(Unit* pWho) override
+    {
+        // Propagate combat state to the controlling player
+        if (auto pOwner = m_creature->GetCharmer())
+        {
+            if (auto pPlayer = pOwner->ToPlayer())
+            {
+                // Put the controlling player in combat
+                pPlayer->SetInCombatWith(pWho);
+                pWho->SetInCombatWith(pPlayer);
+                
+                // Optional: Also set combat state directly
+                pPlayer->SetInCombatState(true, pWho);
+            }
+        }
+        
+        ScriptedAI::EnterCombat(pWho);
+    }
+    
     void JustDied(Unit* pKiller) override
     {
         if (auto pOwner = m_creature->GetCharmer())
@@ -1919,9 +1943,8 @@ struct npc_summon_possessedAI : ScriptedAI
             {
                 if (uint32 spellId = m_creature->GetUInt32Value(UNIT_CREATED_BY_SPELL))
                     pPlayer->RemoveAurasDueToSpell(spellId);
-            } 
+            }
         }
-
         ScriptedAI::JustDied(pKiller);
     }
 };
