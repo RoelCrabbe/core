@@ -1942,10 +1942,8 @@ struct npc_summon_possessedAI : ScriptedAI
         ScriptedAI::JustDied(pKiller);
     }
     
-    void JustEngagedWith(Unit* pWho) override
+    void Aggro(Unit* pWho) override
     {
-        // Alternative/additional method for combat initiation
-        // This might be called instead of or in addition to EnterCombat
         if (auto pOwner = m_creature->GetCharmer())
         {
             if (auto pPlayer = pOwner->ToPlayer())
@@ -1955,7 +1953,7 @@ struct npc_summon_possessedAI : ScriptedAI
             }
         }
         
-        ScriptedAI::JustEngagedWith(pWho);
+        ScriptedAI::Aggro(pWho);
     }
 };
 
