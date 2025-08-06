@@ -1935,8 +1935,8 @@ struct npc_summon_possessedAI : ScriptedAI
                     pPlayer->SetInCombatWith(target);
                     target->SetInCombatWith(pPlayer);
 
-                    if (target->IsAIEnabled())
-                        target->AI()->AttackStart(pPlayer);  // <-- Explicit attack start
+                    if (target->GetAI())
+                        target->GetAI()->AttackStart(pPlayer);
                 }
             }
         }
