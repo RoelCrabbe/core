@@ -1919,31 +1919,7 @@ struct npc_summon_possessedAI : ScriptedAI
             {
                 if (uint32 spellId = m_creature->GetUInt32Value(UNIT_CREATED_BY_SPELL))
                     pPlayer->RemoveAurasDueToSpell(spellId);
-
-                auto& eyeThreatMgr = m_creature->GetThreatManager();
-                auto& playerThreatMgr = pPlayer->GetThreatManager();
-
-                for (auto const& threatRef : eyeThreatMgr.getThreatList())
-                {
-                    Unit* target = threatRef->getTarget();
-                    if (!target || !target->IsAlive())
-                        continue;
-
-                    float threatAmount = threatRef->getThreat();
-                    playerThreatMgr.addThreat(target, threatAmount);
-
-                    pPlayer->SetInCombatWith(target);
-                    target->SetInCombatWith(pPlayer);
-
-                    // Check if target is a Creature and get its AI
-                    if (Creature* creatureTarget = target->ToCreature())
-                    {
-                        if (creatureTarget->AI())
-                            creatureTarget->AI()->AttackStart(pPlayer);
-                    }
-                }
-
-            }
+            } 
         }
 
         ScriptedAI::JustDied(pKiller);
