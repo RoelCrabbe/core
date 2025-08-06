@@ -1935,9 +1935,14 @@ struct npc_summon_possessedAI : ScriptedAI
                     pPlayer->SetInCombatWith(target);
                     target->SetInCombatWith(pPlayer);
 
-                    if (target->GetAI())
-                        target->GetAI()->AttackStart(pPlayer);
+                    // Check if target is a Creature and get its AI
+                    if (Creature* creatureTarget = target->ToCreature())
+                    {
+                        if (creatureTarget->AI())
+                            creatureTarget->AI()->AttackStart(pPlayer);
+                    }
                 }
+
             }
         }
 
