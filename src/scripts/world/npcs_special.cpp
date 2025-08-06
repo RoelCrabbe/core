@@ -1905,23 +1905,53 @@ struct npc_summon_possessedAI : ScriptedAI
     {
         npc_summon_possessedAI::Reset();
     }
-
+    
     void Reset() override
     {
-
     }
-
+    
+    void EnterCombat(Unit* pWho) override
+    {
+        // Propagate combat state to the controlling player
+        if (auto pOwner = m_creature->GetCharmer())
+        {
+            if (auto pPlayer = pOwner->ToPlayer())
+            {
+                pPlayer->SetInCombatWith(pWho);
+                pWho->SetInCombatWith(pPlayer);
+            }
+        }
+        
+        ScriptedAI::EnterCombat(pWho);
+    }
+    
     void JustDied(Unit* pKiller) override
     {
         if (auto pOwner = m_creature->GetCharmer())
         {
             if (auto pPlayer = pOwner->ToPlayer())
             {
+                // Transfer all threat/aggro to the controlling player (vanilla behavior)
+                auto const& threatList = m_creature->GetThreatManager().getThreatList();
+                for (auto const& ref : threatList)
+                {
+                    if (Unit* pAttacker = ref->getTarget())
+                    {
+                        // Transfer threat to the player
+                        pAttacker->GetThreatManager().addThreat(pPlayer, ref->getThreat());
+                        pAttacker->SetInCombatWith(pPlayer);
+                        pPlayer->SetInCombatWith(pAttacker);
+                        
+                        // Make the attacker target the player if it was targeting the eye
+                        if (pAttacker->GetVictim() == m_creature)
+                            pAttacker->AttackStart(pPlayer);
+                    }
+                }
+                
                 if (uint32 spellId = m_creature->GetUInt32Value(UNIT_CREATED_BY_SPELL))
                     pPlayer->RemoveAurasDueToSpell(spellId);
-            } 
+            }
         }
-
         ScriptedAI::JustDied(pKiller);
     }
 };
