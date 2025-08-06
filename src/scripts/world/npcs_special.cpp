@@ -1905,30 +1905,12 @@ struct npc_summon_possessedAI : ScriptedAI
     {
         npc_summon_possessedAI::Reset();
     }
-    
+
     void Reset() override
     {
+
     }
-    
-    void EnterCombat(Unit* pWho) override
-    {
-        // Propagate combat state to the controlling player
-        if (auto pOwner = m_creature->GetCharmer())
-        {
-            if (auto pPlayer = pOwner->ToPlayer())
-            {
-                // Put the controlling player in combat
-                pPlayer->SetInCombatWith(pWho);
-                pWho->SetInCombatWith(pPlayer);
-                
-                // Optional: Also set combat state directly
-                pPlayer->SetInCombatState(true, pWho);
-            }
-        }
-        
-        ScriptedAI::EnterCombat(pWho);
-    }
-    
+
     void JustDied(Unit* pKiller) override
     {
         if (auto pOwner = m_creature->GetCharmer())
@@ -1937,23 +1919,10 @@ struct npc_summon_possessedAI : ScriptedAI
             {
                 if (uint32 spellId = m_creature->GetUInt32Value(UNIT_CREATED_BY_SPELL))
                     pPlayer->RemoveAurasDueToSpell(spellId);
-            }
+            } 
         }
+
         ScriptedAI::JustDied(pKiller);
-    }
-    
-    void Aggro(Unit* pWho) override
-    {
-        if (auto pOwner = m_creature->GetCharmer())
-        {
-            if (auto pPlayer = pOwner->ToPlayer())
-            {
-                pPlayer->SetInCombatWith(pWho);
-                pWho->SetInCombatWith(pPlayer);
-            }
-        }
-        
-        ScriptedAI::Aggro(pWho);
     }
 };
 
