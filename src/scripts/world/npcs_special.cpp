@@ -1903,13 +1903,8 @@ struct npc_summon_possessedAI : ScriptedAI
 {
     explicit npc_summon_possessedAI(Creature* pCreature) : ScriptedAI(pCreature)
     {
-        npc_summon_possessedAI::Reset();
-        
-        // Set a much larger aggro/combat range for possessed creatures
-        m_creature->SetAggroDistance(100.0f); // Increase from default ~10-15 to 100 yards
-        
-        // Alternative method if SetAggroDistance doesn't exist:
-        // m_creature->SetDetectionDistance(100.0f);
+        npc_summon_possessedAI::Reset();        
+        m_creature->SetLeashDistance(100.0f);
     }
     
     void Reset() override
