@@ -226,7 +226,7 @@ struct boss_skeramAI : public ScriptedAI
         if (FullFillment_Timer < diff)
         {
             // Get closest target
-            if (Player* target = m_creature->FindNearestHostilePlayer(40.0f))
+            if (Player* target = m_creature->SelectAttackingTarget(ATTACKING_TARGET_RANDOM, 1))
             {
                 if (DoCastSpellIfCan(target, SPELL_TRUE_FULFILLMENT, CF_AURA_NOT_PRESENT) == CAST_OK)
                 {
@@ -237,7 +237,7 @@ struct boss_skeramAI : public ScriptedAI
                     m_creature->CastSpell(target, SPELL_TF_MOD_HEAL, true);
                     m_creature->CastSpell(target, SPELL_TF_IMMUNITY, true);
 
-                    FullFillment_Timer = urand(20500, 25000);
+                    FullFillment_Timer = urand(20000, 25000);
                     ControlledPlayerGUID = target->GetObjectGuid();
                 }
             }
@@ -272,14 +272,12 @@ struct boss_skeramAI : public ScriptedAI
         if (boss_skeramAI* imageAI = dynamic_cast<boss_skeramAI*>(skeramImage->AI()))
             imageAI->IsImage = true;
 
-        float skeramPercent = m_creature->GetHealthPercent()/100.0f;
+        float staticPercent = 0.125f; // 12.5%
 
-        // Set health to look like the True Prophet. Will have 12.5%, 15% and 17.5% of max Skeram HP.
-        float percent = 0.2 * (1 - skeramPercent) + 0.1 * skeramPercent;
-        float maxHealth = m_creature->GetMaxHealth() * percent / skeramPercent;
+        float maxHealth = m_creature->GetMaxHealth() * staticPercent;
 
         skeramImage->SetMaxHealth(maxHealth);
-        skeramImage->SetHealthPercent(skeramPercent*100.0f);
+        skeramImage->SetHealthPercent(skeramPercent * 100.0f);  // Keep clones' current HP % same as boss
         skeramImage->SetInCombatWithZone();
         skeramImage->SetVisibility(VISIBILITY_OFF);
 
