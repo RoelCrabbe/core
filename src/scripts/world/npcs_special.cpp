@@ -1926,22 +1926,18 @@ struct npc_summon_possessedAI : ScriptedAI
                 for (auto const& threatRef : eyeThreatMgr.getThreatList())
                 {
                     Unit* target = threatRef->getTarget();
-                    if (!target)
+                    if (!target || !target->IsAlive())
                         continue;
 
                     float threatAmount = threatRef->getThreat();
                     playerThreatMgr.addThreat(target, threatAmount);
 
-                    // Force mobs to enter combat with player
-                    if (target->IsAlive())
-                    {
-                        pPlayer->SetInCombatWith(target);
-                        target->SetInCombatWith(pPlayer);
-                    }
-                }
+                    pPlayer->SetInCombatWith(target);
+                    target->SetInCombatWith(pPlayer);
 
-                // Optional: this line removed since it doesn't exist for Player
-                // pPlayer->SetInCombatWithZone();
+                    if (target->IsAIEnabled())
+                        target->AI()->AttackStart(pPlayer);  // <-- Explicit attack start
+                }
             }
         }
 
