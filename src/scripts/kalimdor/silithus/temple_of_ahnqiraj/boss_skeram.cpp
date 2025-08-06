@@ -83,7 +83,7 @@ struct boss_skeramAI : public ScriptedAI
     void Reset() override
     {
         ArcaneExplosion_Timer = urand(6000, 8000);
-        EarthShock_Timer = 1000;
+        EarthShock_Timer = 1250;
         FullFillment_Timer = urand(10000, 15000);
         Blink_Timer = urand(15000, 20000);
 
@@ -217,7 +217,7 @@ struct boss_skeramAI : public ScriptedAI
             if (EarthShock_Timer < diff)
             {
                 if (DoCastSpellIfCan(m_creature->GetVictim(), SPELL_EARTH_SHOCK) == CAST_OK)
-                    EarthShock_Timer = 1000;
+                    EarthShock_Timer = 1250;
             }
             else
                 EarthShock_Timer -= diff;
