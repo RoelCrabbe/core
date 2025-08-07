@@ -613,6 +613,7 @@ bool GossipHello_EnchantNPC(Player* player, Creature* creature)
     player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
     return true;
 }
+
 bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, uint32 action)
 {
     if (sender != GOSSIP_SENDER_MAIN)
@@ -630,7 +631,7 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             player->ADD_GOSSIP_ITEM(5, "Armor", GOSSIP_SENDER_MAIN, CLOAK_ARMOR);
             player->ADD_GOSSIP_ITEM(5, "Dodge", GOSSIP_SENDER_MAIN, CLOAK_DODGE);
             player->ADD_GOSSIP_ITEM(5, "Subtlety", GOSSIP_SENDER_MAIN, CLOAK_SUB);
-        break;
+            break;
         case EQUIPMENT_SLOT_WRISTS:
             player->ADD_GOSSIP_ITEM(5, "Stamina", GOSSIP_SENDER_MAIN, BRACER_STAM);
             player->ADD_GOSSIP_ITEM(5, "Strength", GOSSIP_SENDER_MAIN, BRACER_STR);
@@ -782,7 +783,7 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
                 break;
             case BOOTS_AGI:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_FEET);
-                id = 904;
+                id = 20023;
                 break;
             case BOOTS_SPEED:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_FEET);
@@ -798,8 +799,6 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
     }
     return true;
 }
-
-
 
 void LearnSkillRecipesHelper(Player *player, uint32 skill_id)
 {
@@ -834,6 +833,7 @@ void LearnSkillRecipesHelper(Player *player, uint32 skill_id)
         player->LearnSpell(skillLine->spellId, false);
     }
 }
+
 bool LearnAllRecipesInProfession(Player *pPlayer, SkillType skill)
 {
     ChatHandler handler(pPlayer->GetSession());
@@ -878,6 +878,7 @@ bool GossipHello_ProfessionNPC(Player* player, Creature* creature)
     player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
     return true;
 }
+
 void CompleteLearnProfession(Player *pPlayer, Creature *pCreature, SkillType skill)
 {
     if (pPlayer->GetFreePrimaryProfessionPoints() == 0 && !(skill == SKILL_COOKING || skill == SKILL_FIRST_AID))
@@ -890,6 +891,7 @@ void CompleteLearnProfession(Player *pPlayer, Creature *pCreature, SkillType ski
             pPlayer->GetSession()->SendNotification("Internal error.");
     }
 }
+
 bool GossipSelect_ProfessionNPC(Player* player, Creature* creature, uint32 sender, uint32 action)
 {
     switch (action)
