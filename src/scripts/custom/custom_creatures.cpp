@@ -726,10 +726,10 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
                     player->CLOSE_GOSSIP_MENU();
                     return true;
                 }
-                if (action == OFFHAND_SPIRIT)
-                    id = 1890;
-                else if (action == OFFHAND_LESSER_BLOCK)
+                if (action == OFFHAND_LESSER_BLOCK)
                     id = 863;
+                else if (action == OFFHAND_FROSTRES)
+                    id = 926;
                 else if (action == OFFHAND_STAM)
                     id = 929;
                 break;
