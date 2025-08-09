@@ -265,7 +265,7 @@ struct boss_skeramAI : public ScriptedAI
 
     }
 
-    void JustSummoned(Creature* skeramImage) override
+ void JustSummoned(Creature* skeramImage) override
     {
         if (m_creature->GetEntry() != skeramImage->GetEntry())
             return;
@@ -273,22 +273,14 @@ struct boss_skeramAI : public ScriptedAI
         if (boss_skeramAI* imageAI = dynamic_cast<boss_skeramAI*>(skeramImage->AI()))
             imageAI->IsImage = true;
 
-        float bossPercent = m_creature->GetHealthPercent(); // 0–100
-        float desiredCloneHP = m_creature->GetMaxHealth() * 0.125f; // always ~68–69k for 556k boss
+        float skeramPercent = m_creature->GetHealthPercent()/100.0f;
 
-        // Avoid divide-by-zero
-        if (bossPercent < 1.0f) bossPercent = 1.0f;
+        // Set health to look like the True Prophet. Will have 12.5%, 15% and 17.5% of max Skeram HP.
+        float percent = 0.2 * (1 - skeramPercent) + 0.1 * skeramPercent;
+        float maxHealth = m_creature->GetMaxHealth() * percent / skeramPercent;
 
-        // Calculate required max HP so SetHealthPercent() results in desiredCloneHP
-        float cloneMaxHP = desiredCloneHP / (bossPercent / 100.0f);
-
-        // Clamp to safe range
-        if (cloneMaxHP < desiredCloneHP) cloneMaxHP = desiredCloneHP;
-        if (cloneMaxHP > m_creature->GetMaxHealth()) cloneMaxHP = m_creature->GetMaxHealth();
-
-        skeramImage->SetMaxHealth(cloneMaxHP);
-        skeramImage->SetHealthPercent(bossPercent);
-
+        skeramImage->SetMaxHealth(maxHealth);
+        skeramImage->SetHealthPercent(skeramPercent*100.0f);
         skeramImage->SetInCombatWithZone();
         skeramImage->SetVisibility(VISIBILITY_OFF);
 
