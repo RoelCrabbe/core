@@ -577,6 +577,7 @@ enum Enchants
     GLOVES_FROST,
     GLOVES_SHADOW,
     GLOVES_HEALING,
+    GLOVES_THREAT,
     BOOTS_AGI,
     BOOTS_SPEED,
     BOOTS_STAM,
@@ -647,6 +648,7 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             player->ADD_GOSSIP_ITEM(5, "Frost Power", GOSSIP_SENDER_MAIN, GLOVES_FROST);
             player->ADD_GOSSIP_ITEM(5, "Shadow Power", GOSSIP_SENDER_MAIN, GLOVES_SHADOW);
             player->ADD_GOSSIP_ITEM(5, "Healing Power", GOSSIP_SENDER_MAIN, GLOVES_HEALING);
+            player->ADD_GOSSIP_ITEM(5, "Threat", GOSSIP_SENDER_MAIN, GLOVES_THREAT);
             break;
         case EQUIPMENT_SLOT_FEET:
             player->ADD_GOSSIP_ITEM(5, "Greater Stamina", GOSSIP_SENDER_MAIN, BOOTS_STAM);
@@ -792,6 +794,10 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             case GLOVES_HEALING:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_HANDS);
                 id = 2617;
+                break;
+            case GLOVES_THREAT:
+                item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_HANDS);
+                id = 2613;
                 break;
             case BOOTS_AGI:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_FEET);

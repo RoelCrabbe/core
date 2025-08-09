@@ -1,7 +1,7 @@
 -- GM Island Vendors for VMaNGOS by brotalnia.
 -- CREATURE_TEMPLATE
 INSERT INTO `creature_template` (`entry`, `patch`, `display_id1`, `display_id2`, `display_id3`, `display_id4`, `name`, `subname`, `gossip_menu_id`, `level_min`, `level_max`, `health_min`, `health_max`, `mana_min`, `mana_max`, `armor`, `faction`, `npc_flags`, `speed_walk`, `speed_run`, `scale`, `detection_range`, `call_for_help_range`, `leash_range`, `rank`, `xp_multiplier`, `dmg_min`, `dmg_max`, `dmg_school`, `attack_power`, `dmg_multiplier`, `base_attack_time`, `ranged_attack_time`, `unit_class`, `unit_flags`, `dynamic_flags`, `beast_family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `ranged_dmg_min`, `ranged_dmg_max`, `ranged_attack_power`, `type`, `type_flags`, `loot_id`, `pickpocket_loot_id`, `skinning_loot_id`, `holy_res`, `fire_res`, `nature_res`, `frost_res`, `shadow_res`, `arcane_res`, `spell_id1`, `spell_id2`, `spell_id3`, `spell_id4`, `spell_list_id`, `pet_spell_list_id`, `gold_min`, `gold_max`, `ai_name`, `movement_type`, `inhabit_type`, `civilian`, `racial_leader`, `regeneration`, `equipment_id`, `trainer_id`, `vendor_id`, `mechanic_immune_mask`, `school_immune_mask`, `flags_extra`, `script_name`) VALUES 
-(20008, 0, 15251, 15251, 0, 0, 'Teleportman', 'Player Test Realm', 0, 50, 50, 4000, 5000, 200, 300, 200, 35, 3, 0, 0, 1.5, 20, 5, 0, 1, 1, 687, 967, 0, 226, 1, 1000, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 2, 'custom_teleport_npc'),
+(20008, 0, 15251, 15251, 0, 0, 'Teleportman', 'Player Test Realm', 0, 50, 50, 4000, 5000, 200, 300, 200, 35, 3, 1.26, 1.14286, 1.5, 20, 5, 0, 1, 1, 687, 967, 0, 226, 1, 1000, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 2, 'custom_teleport_npc'),
 (90000, 0, 7249, 0, 0, 0, 'Druid Sets', 'Druid Trainer', 0, 60, 60, 1337, 1337, 420, 420, 3252, 35, 21, 1.26, 1.14286, 0, 20, 5, 0, 1, 1, 110, 142, 0, 272, 1, 2000, 2000, 8, 2, 0, 0, 0, 0, 11, 0, 74.448, 102.366, 100, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 64, ''),
 (90001, 0, 15976, 0, 0, 0, 'Shaman Sets', 'Shaman Trainer', 0, 60, 60, 1337, 1337, 420, 420, 3252, 35, 21, 1.26, 1.14286, 0, 20, 5, 0, 1, 1, 110, 142, 0, 272, 1, 2000, 2000, 8, 2, 0, 0, 0, 0, 7, 0, 74.448, 102.366, 100, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 64, ''),
 (90002, 0, 15834, 0, 0, 0, 'Mage Sets', 'Mage Trainer', 0, 60, 60, 1337, 1337, 420, 420, 3252, 35, 21, 1.26, 1.14286, 0, 20, 5, 0, 1, 1, 110, 142, 0, 272, 1, 2000, 2000, 8, 2, 0, 0, 0, 0, 8, 0, 74.448, 102.366, 100, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 64, ''),
@@ -30,8 +30,8 @@ INSERT INTO `creature_template` (`entry`, `patch`, `display_id1`, `display_id2`,
 (90025, 0, 3019, 0, 0, 0, 'Apprentice Training Dummy', '', 0, 1, 1, 1000000, 1000000, 0, 0, 100, 914, 0, 0.91, 1.14286, 0, 20, 5, 0, 0, 1, 1, 2, 0, 0, 1, 2000, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 100, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 0, 0, 3, 0, 0, 0, 17, 0, 64, 'custom_npc_training_dummy'),
 (90026, 0, 7209, 0, 0, 0, 'Frost Resistance', '', 0, 60, 60, 1337, 1337, 0, 0, 3252, 35, 16388, 1.08, 1.14286, 1, 20, 5, 0, 1, 1, 42, 53, 0, 122, 1, 2000, 2000, 1, 2, 0, 0, 0, 0, 0, 0, 45.144, 62.073, 100, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 64, ''),
 (90027, 0, 7209, 0, 0, 0, 'Enchants 1', '', 0, 60, 60, 1337, 1337, 0, 0, 3252, 35, 16388, 1.08, 1.14286, 1, 20, 5, 0, 1, 1, 42, 53, 0, 122, 1, 2000, 2000, 1, 2, 0, 0, 0, 0, 0, 0, 45.144, 62.073, 100, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 64, ''),
-(90028, 0, 7209, 0, 0, 0, 'Enchants 2', '', 0, 50, 50, 4000, 5000, 200, 300, 200, 35, 3, 0, 0, 1, 20, 5, 0, 1, 1, 687, 967, 0, 226, 1, 1000, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 2, 'custom_enchant_npc'),
-(90029, 0, 7209, 0, 0, 0, 'Professions', '', 0, 50, 50, 4000, 5000, 200, 300, 200, 35, 3, 0, 0, 1, 20, 5, 0, 1, 1, 687, 967, 0, 226, 1, 1000, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 2, 'custom_professions_npc');
+(90028, 0, 7209, 0, 0, 0, 'Enchants 2', '', 0, 50, 50, 4000, 5000, 200, 300, 200, 35, 3, 1.08, 1.14286, 1, 20, 5, 0, 1, 1, 687, 967, 0, 226, 1, 1000, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 2, 'custom_enchant_npc'),
+(90029, 0, 7209, 0, 0, 0, 'Professions', '', 0, 50, 50, 4000, 5000, 200, 300, 200, 35, 3, 1.08, 1.14286, 1, 20, 5, 0, 1, 1, 687, 967, 0, 226, 1, 1000, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 2, 'custom_professions_npc');
 -- NPC_TRAINER
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90000, 499, 0, 0, 0, 20);
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90000, 1151, 0, 0, 0, 26);
@@ -476,6 +476,7 @@ INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillv
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90002, 10055, 0, 0, 0, 48);
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90002, 10056, 0, 0, 0, 58);
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90002, 10141, 0, 0, 0, 40);
+INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90002, 10143, 0, 0, 0, 55);
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90002, 10142, 0, 0, 0, 50);
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90002, 10146, 0, 0, 0, 42);
 INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (90002, 10147, 0, 0, 0, 52);
@@ -1901,6 +1902,7 @@ INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90009
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90009, 9214, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90009, 4213, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011, 5267, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011, 23054, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011, 17071, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011, 19346, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011, 22802, 0, 0);
@@ -1941,6 +1943,8 @@ INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011, 19019, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90011, 17182, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90012, 19967, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90012, 23009, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90012, 21459, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90012, 19861, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90012, 19367, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90012, 22821, 0, 0);
@@ -2001,6 +2005,25 @@ INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90014
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90014, 23049, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90014, 23048, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21697, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21665, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 23226, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 23071, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21605, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21693, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 13385, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 14551, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21639, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 22983, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 23070, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 19385, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 23068, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 12640, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 23000, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21598, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21674, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21581, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 22730, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21585, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 19398, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21621, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21710, 0, 0);
@@ -2051,6 +2074,17 @@ INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 21706, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90015, 19387, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 19885, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 17063, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 23025, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 22398, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 21620, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 19395, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 19382, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 22939, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 23038, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 19431, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 21601, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 19406, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 19491, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 21700, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 19377, 0, 0);
@@ -2101,6 +2135,7 @@ INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 22396, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90016, 23005, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90017, 8932, 0, 0);
+INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90017, 22754, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90017, 18300, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90017, 20031, 0, 0);
 INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES (90017, 21215, 0, 0);
@@ -2226,6 +2261,14 @@ INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES
 (90026, 22941, 0, 0),
 (90026, 22701, 0, 0),
 (90026, 23020, 0, 0),
+-- Fire
+(90026, 19139, 0, 0),
+(90026, 19433, 0, 0),
+(90026, 19148, 0, 0),
+(90026, 20039, 0, 0),
+(90026, 15138, 0, 0),
+(90026, 19164, 0, 0), 
+-- 
 (90027, 20076, 0, 0),
 (90027, 20077, 0, 0),
 (90027, 20078, 0, 0),
@@ -2249,7 +2292,11 @@ INSERT INTO `npc_vendor` (`entry`, `item`, `maxcount`, `incrtime`) VALUES
 (90027, 11644, 0, 0),
 (90027, 11643, 0, 0),
 (90027, 11642, 0, 0),
-(90027, 11622, 0, 0);
+(90027, 11622, 0, 0),
+(90027, 23545, 0, 0),
+(90027, 23548, 0, 0),
+(90027, 23547, 0, 0),
+(90027, 23549, 0, 0);
 -- CREATURE
 INSERT INTO `creature` (`guid`, `id`, `map`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecsmin`, `spawntimesecsmax`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `DeathState`, `MovementType`, `spawnFlags`, `visibilitymod`, `patch_min`, `patch_max`) VALUES 
 (2000000, 90000, 1, 0, 0, 16269.5, 16315.1, 14.0968, 6.2399, 120, 120, 0, 0, 100, 100, 0, 0, 0, 0, 0, 10),
