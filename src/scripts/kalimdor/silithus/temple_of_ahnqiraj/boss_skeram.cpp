@@ -286,8 +286,8 @@ struct boss_skeramAI : public ScriptedAI
         if (cloneMaxHP < desiredCloneHP) cloneMaxHP = desiredCloneHP;
         if (cloneMaxHP > m_creature->GetMaxHealth()) cloneMaxHP = m_creature->GetMaxHealth();
 
-        skeramImage->SetMaxHealth(maxHealth);
-        skeramImage->SetHealthPercent(skeramPercent*100.0f);
+        skeramImage->SetMaxHealth(cloneMaxHP);
+        skeramImage->SetHealthPercent(bossPercent);
         skeramImage->SetInCombatWithZone();
         skeramImage->SetVisibility(VISIBILITY_OFF);
 
