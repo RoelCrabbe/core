@@ -265,7 +265,7 @@ struct boss_skeramAI : public ScriptedAI
 
     }
 
- void JustSummoned(Creature* skeramImage) override
+    void JustSummoned(Creature* skeramImage) override
     {
         if (m_creature->GetEntry() != skeramImage->GetEntry())
             return;
