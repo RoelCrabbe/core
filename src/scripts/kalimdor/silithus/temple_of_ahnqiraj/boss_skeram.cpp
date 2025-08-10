@@ -217,7 +217,7 @@ struct boss_skeramAI : public ScriptedAI
             if (EarthShock_Timer < diff)
             {
                 if (DoCastSpellIfCan(m_creature->GetVictim(), SPELL_EARTH_SHOCK) == CAST_OK)
-                    EarthShock_Timer = 1250;
+                    EarthShock_Timer = 1000;
             }
             else
                 EarthShock_Timer -= diff;
@@ -274,7 +274,7 @@ struct boss_skeramAI : public ScriptedAI
             imageAI->IsImage = true;
 
         float bossPercent = m_creature->GetHealthPercent(); // 0–100
-        float desiredCloneHP = m_creature->GetMaxHealth() * 0.125f; // always ~68–69k for 556k boss
+        float desiredCloneHP = m_creature->GetMaxHealth() * 0.15f; // always ~68–69k for 556k boss
 
         // Avoid divide-by-zero
         if (bossPercent < 1.0f) bossPercent = 1.0f;

@@ -572,6 +572,7 @@ enum Enchants
     BRACER_STR,
     BRACER_HEAL,
     BRACER_MANA_REGEN,
+    BRACER_INTELLECT,
     GLOVES_AGI,
     GLOVES_FIRE,
     GLOVES_FROST,
@@ -641,6 +642,7 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             player->ADD_GOSSIP_ITEM(5, "Superior Strength", GOSSIP_SENDER_MAIN, BRACER_STR);
             player->ADD_GOSSIP_ITEM(5, "Healing", GOSSIP_SENDER_MAIN, BRACER_HEAL);
             player->ADD_GOSSIP_ITEM(5, "Mana Regeneration", GOSSIP_SENDER_MAIN, BRACER_MANA_REGEN);
+            player->ADD_GOSSIP_ITEM(5, "Greater Intellect", GOSSIP_SENDER_MAIN, BRACER_INTELLECT);
             break;
         case EQUIPMENT_SLOT_HANDS:
             player->ADD_GOSSIP_ITEM(5, "Superior Agility", GOSSIP_SENDER_MAIN, GLOVES_AGI);
@@ -774,6 +776,10 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             case BRACER_MANA_REGEN:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_WRISTS);
                 id = 2565;
+                break;
+            case BRACER_INTELLECT:
+                item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_WRISTS);
+                id = 1883;
                 break;
             case GLOVES_AGI:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_HANDS);
