@@ -265,7 +265,7 @@ struct boss_skeramAI : public ScriptedAI
 
     }
 
-    void JustSummoned(Creature* skeramImage) override
+ void JustSummoned(Creature* skeramImage) override
     {
         if (m_creature->GetEntry() != skeramImage->GetEntry())
             return;
@@ -286,9 +286,8 @@ struct boss_skeramAI : public ScriptedAI
         if (cloneMaxHP < desiredCloneHP) cloneMaxHP = desiredCloneHP;
         if (cloneMaxHP > m_creature->GetMaxHealth()) cloneMaxHP = m_creature->GetMaxHealth();
 
-        skeramImage->SetMaxHealth(cloneMaxHP);
-        skeramImage->SetHealthPercent(bossPercent);
-
+        skeramImage->SetMaxHealth(maxHealth);
+        skeramImage->SetHealthPercent(skeramPercent*100.0f);
         skeramImage->SetInCombatWithZone();
         skeramImage->SetVisibility(VISIBILITY_OFF);
 
