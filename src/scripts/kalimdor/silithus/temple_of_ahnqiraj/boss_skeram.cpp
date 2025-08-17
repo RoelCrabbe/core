@@ -274,7 +274,7 @@ struct boss_skeramAI : public ScriptedAI
             imageAI->IsImage = true;
 
         float bossPercent = m_creature->GetHealthPercent(); // 0–100
-        float desiredCloneHP = m_creature->GetMaxHealth() * 0.15f; // always ~68–69k for 556k boss
+        float desiredCloneHP = m_creature->GetMaxHealth() * 0.135f; // always ~68–69k for 556k boss
 
         // Avoid divide-by-zero
         if (bossPercent < 1.0f) bossPercent = 1.0f;
