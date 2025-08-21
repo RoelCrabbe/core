@@ -562,11 +562,14 @@ enum Enchants
     OFFHAND_LESSER_BLOCK,
     OFFHAND_STAM,
     OFFHAND_FROSTRES,
+    OFFHAND_WEP_CRUSADER,
+    OFFHAND_WEP1H_AGILITY,
     CHEST_STATS,
     CLOAK_DODGE,
     CLOAK_SUB,
     CLOAK_FIRE_RES,
     CLOAK_NATURE_RES,
+    CLOAK_GREATER_RES,
     CLOAK_AGILITY,
     BRACER_STAM,
     BRACER_STR,
@@ -636,6 +639,7 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             player->ADD_GOSSIP_ITEM(5, "Lesser Agility", GOSSIP_SENDER_MAIN, CLOAK_AGILITY);
             player->ADD_GOSSIP_ITEM(5, "Greater Fire Resistance", GOSSIP_SENDER_MAIN, CLOAK_FIRE_RES);
             player->ADD_GOSSIP_ITEM(5, "Greater Nature Resistance ", GOSSIP_SENDER_MAIN, CLOAK_NATURE_RES);
+            player->ADD_GOSSIP_ITEM(5, "Greater Resistance ", GOSSIP_SENDER_MAIN, CLOAK_GREATER_RES);
             break;
         case EQUIPMENT_SLOT_WRISTS:
             player->ADD_GOSSIP_ITEM(5, "Superior Stamina", GOSSIP_SENDER_MAIN, BRACER_STAM);
@@ -669,6 +673,8 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             player->ADD_GOSSIP_ITEM(5, "Frost Resistance", GOSSIP_SENDER_MAIN, OFFHAND_FROSTRES);
             player->ADD_GOSSIP_ITEM(5, "Lesser Block", GOSSIP_SENDER_MAIN, OFFHAND_LESSER_BLOCK);
             player->ADD_GOSSIP_ITEM(5, "Greater Stamina", GOSSIP_SENDER_MAIN, OFFHAND_STAM);
+            player->ADD_GOSSIP_ITEM(5, "Crusader", GOSSIP_SENDER_MAIN, OFFHAND_WEP_CRUSADER);
+            player->ADD_GOSSIP_ITEM(5, "Agility (1H)", GOSSIP_SENDER_MAIN, OFFHAND_WEP1H_AGILITY);
             break;
         }
         player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
@@ -737,6 +743,26 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
                 else if (action == OFFHAND_STAM)
                     id = 929;
                 break;
+
+            case OFFHAND_WEP_CRUSADER:
+            case OFFHAND_WEP1H_AGILITY:
+                item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_OFFHAND);
+                if (item && (item->GetProto()->SubClass != ITEM_SUBCLASS_WEAPON_SWORD &&
+                            item->GetProto()->SubClass != ITEM_SUBCLASS_WEAPON_AXE &&
+                            item->GetProto()->SubClass != ITEM_SUBCLASS_WEAPON_MACE &&
+                            item->GetProto()->SubClass != ITEM_SUBCLASS_WEAPON_DAGGER &&
+                            item->GetProto()->SubClass != ITEM_SUBCLASS_WEAPON_FIST))
+                {
+                    player->GetSession()->SendNotification("Requires Offhand Weapon.");
+                    player->CLOSE_GOSSIP_MENU();
+                    return true;
+                }
+                if (action == OFFHAND_WEP_CRUSADER)
+                    id = 1900;
+                else if (action == OFFHAND_WEP1H_AGILITY)
+                    id = 2564;
+                break;
+
             case CHEST_STATS:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_CHEST);
                 id = 1891;
@@ -756,6 +782,10 @@ bool GossipSelect_EnchantNPC(Player* player, Creature* creature, uint32 sender, 
             case CLOAK_NATURE_RES:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_BACK);
                 id = 2620;
+                break;
+            case CLOAK_GREATER_RES:
+                item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_BACK);
+                id = 1888;
                 break;
             case CLOAK_AGILITY:
                 item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, EQUIPMENT_SLOT_BACK);
