@@ -615,7 +615,7 @@ bool GossipHello_EnchantNPC(Player* player, Creature* creature)
     player->ADD_GOSSIP_ITEM(5, "Gloves", GOSSIP_SENDER_MAIN, EQUIPMENT_SLOT_HANDS);
     player->ADD_GOSSIP_ITEM(5, "Boots", GOSSIP_SENDER_MAIN, EQUIPMENT_SLOT_FEET);
     player->ADD_GOSSIP_ITEM(5, "Weapon", GOSSIP_SENDER_MAIN, EQUIPMENT_SLOT_MAINHAND);
-    player->ADD_GOSSIP_ITEM(5, "Shield", GOSSIP_SENDER_MAIN, EQUIPMENT_SLOT_OFFHAND);
+    player->ADD_GOSSIP_ITEM(5, "Shield / Offhand", GOSSIP_SENDER_MAIN, EQUIPMENT_SLOT_OFFHAND);
 
     player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
     return true;
