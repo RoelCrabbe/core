@@ -1049,8 +1049,26 @@ struct npc_training_dummyAI : ScriptedAI
 
     void DamageTaken(Unit* pWho, uint32& /*uiDamage*/) override
     {
-        if (pWho)
+        if (pWho && pWho->GetTypeId() == TYPEID_PLAYER) 
+        {
             AddAttackerToList(pWho);
+            
+            // Force group/raid members into combat
+            if (Group* group = ((Player*)pWho)->GetGroup())
+            {
+                for (GroupReference* itr = group->GetFirstMember(); itr != nullptr; itr = itr->next())
+                {
+                    Player* member = itr->getSource();
+                    if (member && member->IsInWorld() && m_creature->GetDistance(member) < 40.0f)
+                    {
+                        m_creature->SetInCombatWith(member);
+                        member->SetInCombatWith(m_creature);
+                        m_creature->AddThreat(member, 0.1f);
+                        AddAttackerToList(member);
+                    }
+                }
+            }
+        }
     }
 
     void SpellHit(Unit* pWho, const SpellEntry* /*pSpell*/) override
