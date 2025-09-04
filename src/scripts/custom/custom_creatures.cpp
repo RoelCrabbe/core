@@ -382,7 +382,7 @@ void SendDefaultMenu_TeleportNPC(Player *player, Creature *_Creature, uint32 act
             break;
         case 4002:// Teleport to Molten Core
             player->CLOSE_GOSSIP_MENU();
-            player->TeleportTo(230, 1121.451172f, -454.316772f, -101.329536f, 3.5f);
+            player->TeleportTo(0, -5715.640137f, -1045.300049f, 182.300003f, 0.6f);
             break;
         case 4003:// Teleport to Blackwing Lair
             player->CLOSE_GOSSIP_MENU();
